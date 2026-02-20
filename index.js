@@ -20,7 +20,8 @@ const DB_CONNECTION = `mongodb+srv://${process.env.DB_USER_NAME}:${process.env.D
 
 //TODO - Replace you Connection String here
 const connectDB = async() => {
-    await mongoose.connect(DB_CONNECTION)
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("Connected to MongoDB Atlas");
 }
 
 async function startServer() {
