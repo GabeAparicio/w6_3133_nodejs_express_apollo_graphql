@@ -14,7 +14,7 @@ const movieResolvers = {
 
         // Get movies by director name (using static method later)
         getMoviesByDirector: async (_, { director_name }) => {
-            return await MovieModel.findByDirectorName(director_name);
+            return await MovieModel.findByDirector(director_name);
         }
     },
 
