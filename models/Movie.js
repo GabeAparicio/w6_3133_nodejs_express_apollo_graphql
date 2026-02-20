@@ -44,9 +44,10 @@ movieSchema.methods.getMovieSummary = function() {
 
 // Add a static method to find movies by director
 movieSchema.statics.findByDirector = function(directorName) {
-  return this.find({ director_name: directorName });
+  return this.find({
+    director_name: { $regex: new RegExp(directorName, "i") }
+  });
 };
-
 // Add a pre-save hook to log when a movie is saved
 movieSchema.pre('save', function() {
   console.log(`Saving movie: ${this.name}`);
